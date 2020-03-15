@@ -1,0 +1,563 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'rust-test'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=rust-test",
+                    "--package=rust-test"
+                ],
+                "filter": {
+                    "name": "rust-test",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'rust-test'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=rust-test",
+                    "--package=rust-test"
+                ],
+                "filter": {
+                    "name": "rust-test",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'wrap-u32'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=wrap-u32",
+                    "--package=rust-test"
+                ],
+                "filter": {
+                    "name": "wrap-u32",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'wrap-u32'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=wrap-u32",
+                    "--package=rust-test"
+                ],
+                "filter": {
+                    "name": "wrap-u32",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'unsized-leak'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=unsized-leak",
+                    "--package=rust-test"
+                ],
+                "filter": {
+                    "name": "unsized-leak",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'unsized-leak'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=unsized-leak",
+                    "--package=rust-test"
+                ],
+                "filter": {
+                    "name": "unsized-leak",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'mat-slice'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=mat-slice",
+                    "--package=rust-test"
+                ],
+                "filter": {
+                    "name": "mat-slice",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'mat-slice'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=mat-slice",
+                    "--package=rust-test"
+                ],
+                "filter": {
+                    "name": "mat-slice",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'strip-mining'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=strip-mining",
+                    "--package=rust-test"
+                ],
+                "filter": {
+                    "name": "strip-mining",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'strip-mining'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=strip-mining",
+                    "--package=rust-test"
+                ],
+                "filter": {
+                    "name": "strip-mining",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'exgcd'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=exgcd",
+                    "--package=rust-test"
+                ],
+                "filter": {
+                    "name": "exgcd",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'exgcd'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=exgcd",
+                    "--package=rust-test"
+                ],
+                "filter": {
+                    "name": "exgcd",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'async-two-lazer-guns'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=async-two-lazer-guns",
+                    "--package=rust-test"
+                ],
+                "filter": {
+                    "name": "async-two-lazer-guns",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'async-two-lazer-guns'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=async-two-lazer-guns",
+                    "--package=rust-test"
+                ],
+                "filter": {
+                    "name": "async-two-lazer-guns",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'mat-view'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=mat-view",
+                    "--package=rust-test"
+                ],
+                "filter": {
+                    "name": "mat-view",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'mat-view'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=mat-view",
+                    "--package=rust-test"
+                ],
+                "filter": {
+                    "name": "mat-view",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'generator-test'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=generator-test",
+                    "--package=rust-test"
+                ],
+                "filter": {
+                    "name": "generator-test",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'generator-test'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=generator-test",
+                    "--package=rust-test"
+                ],
+                "filter": {
+                    "name": "generator-test",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'mat-general'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=mat-general",
+                    "--package=rust-test"
+                ],
+                "filter": {
+                    "name": "mat-general",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'mat-general'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=mat-general",
+                    "--package=rust-test"
+                ],
+                "filter": {
+                    "name": "mat-general",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'strip-mining-asm'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=strip-mining-asm",
+                    "--package=rust-test"
+                ],
+                "filter": {
+                    "name": "strip-mining-asm",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'strip-mining-asm'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=strip-mining-asm",
+                    "--package=rust-test"
+                ],
+                "filter": {
+                    "name": "strip-mining-asm",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'gd32v-serial-api'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=gd32v-serial-api",
+                    "--package=rust-test"
+                ],
+                "filter": {
+                    "name": "gd32v-serial-api",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'gd32v-serial-api'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=gd32v-serial-api",
+                    "--package=rust-test"
+                ],
+                "filter": {
+                    "name": "gd32v-serial-api",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'gd32v-clocks'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=gd32v-clocks",
+                    "--package=rust-test"
+                ],
+                "filter": {
+                    "name": "gd32v-clocks",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'gd32v-clocks'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=gd32v-clocks",
+                    "--package=rust-test"
+                ],
+                "filter": {
+                    "name": "gd32v-clocks",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'async-lazer-gun'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=async-lazer-gun",
+                    "--package=rust-test"
+                ],
+                "filter": {
+                    "name": "async-lazer-gun",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'async-lazer-gun'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=async-lazer-gun",
+                    "--package=rust-test"
+                ],
+                "filter": {
+                    "name": "async-lazer-gun",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'bitset'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=bitset",
+                    "--package=rust-test"
+                ],
+                "filter": {
+                    "name": "bitset",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'bitset'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=bitset",
+                    "--package=rust-test"
+                ],
+                "filter": {
+                    "name": "bitset",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}
