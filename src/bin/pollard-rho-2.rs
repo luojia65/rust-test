@@ -159,10 +159,32 @@ impl PollardRho for usize {
     }
 }
 
+struct U256 {
+    h: u128,
+    l: u128,
+}
+
+impl U256 {
+    fn new(decimal: &str) -> U256 {
+        let mut h = 0;
+        let mut l = 0;
+        for ch in decimal.chars() {
+            let a = ch.to_digit(10).unwrap();
+            if l > u128::max_value() / 10 {
+                h += l % (u128::max_value() / 10);
+                l %= u128::max_value() / 10;
+            } 
+            l *= 10;
+            l += a as u128;
+        }
+        U256 { h, l }
+    }
+}
+
 fn main() {
     let mut a = 0;
     while a == 0 {
-        a = pollard_rho(&116487393, a); //  12899*12907 
+        a = pollard_rho(&1120000, a);
         println!("{:?}", a);
     }
 }
