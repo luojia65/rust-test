@@ -52,5 +52,5 @@ impl ModPow for usize {
 }
 
 fn main() {
-    println!("{}", modpow(2, 10000, &7)); // 2
+    println!("{}", modpow(2, 10000, &1007)); // 929
 }
