@@ -217,7 +217,7 @@ fn pollard_rho(n: Big, mut pre: Big) -> Big {
 fn main() {
     let mut a = Big::new(0);
     while a == 0 {
-        a = pollard_rho(Big::parse_string("92633224202293464529490877582423584974729"), a);
+        a = pollard_rho(Big::parse_string("240"), a);
     }
     println!("{:?}", a);
 }
