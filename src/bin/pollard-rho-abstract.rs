@@ -162,7 +162,7 @@ impl PollardRho for usize {
 fn main() {
     let mut a = 0;
     while a == 0 {
-        a = pollard_rho(&116487393, a); //  12899*12907 
+        a = pollard_rho(&14999992000001, a); // 2999999 * 4999999
         println!("{:?}", a);
     }
 }

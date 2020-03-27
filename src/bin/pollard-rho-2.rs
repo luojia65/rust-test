@@ -93,24 +93,12 @@ fn miller_rabin<T: MillerRabin + Clone>(n: &T) -> bool {
 }
 
 impl MillerRabin for usize {
-    fn is_simple_prime(&self) -> bool { 
-        *self == 2 || *self == 3 || *self == 5 || *self == 7 
-    }
-    fn is_simple_composite(&self) -> bool { 
-        self % 2 == 0 || self % 3 == 0 ||
-        self % 5 == 0 || self % 7 == 0 
-    }
+    fn is_simple_prime(&self) -> bool { *self == 2 || *self == 3 }
+    fn is_simple_composite(&self) -> bool { self % 2 == 0 || self % 3 == 0 }
     fn dec(&self) -> Self { self - 1 }
     fn simple_primes() -> &'static [Self] { &[0, 2, 7, 61] }
     fn eq(&self, other: &Self) -> bool { self == other }
     fn rem(&self, other: &Self) -> Self { self % other }
-}
-
-fn modmuladd<T: ModPow>(a: T, b: T, c: &T, m: &T) -> T {
-    let mut ans = modmul(a, b, &m);
-    ans.add_assign(&c);
-    ans.rem_assign(&m);
-    ans
 }
 
 trait PollardRho: MillerRabin {
@@ -121,29 +109,42 @@ trait PollardRho: MillerRabin {
     fn div(&self, other: &Self) -> Self;
 }
 
-fn pollard_rho<T: PollardRho + Clone>(n: &T, mut pre: T) -> T {
-    if miller_rabin(n) {
-        return T::max(n, &pre);
-    }
-    let mut t1 = T::rand_region(&n);
-    let b = T::rand_region(&n);
-    let mut t2 = modmuladd(t1.clone(), t1.clone(), &b, &n);
-    while !t1.eq(&t2) {
-        let t = T::gcd(&T::diff(&t1, &t2), &n);
-        if !t.eq(&T::identity()) && !t.eq(&n) {
-            pre = pollard_rho(&t, pre);
-            pre = pollard_rho(&n.div(&t), pre);
+fn pollard_rho<T: PollardRho + Clone>(n: T, c: T) -> T {
+    let mut x = T::rand_region(&n.dec()); //[1, n-2]
+    let mut y = x.clone(); 
+    let mut i = 1;
+    let mut k = 2;
+    loop {
+        i += 1;
+        x = modmul(x.clone(), x.clone(), &n);
+        x.add_assign(&c);
+        x.add_assign(&n);
+        let d = T::gcd(&T::diff(&y, &x), &n);
+        if !d.eq(&T::identity()) && !d.eq(&n.dec()) {
+            return d;
         }
-        t1 = modmuladd(t1.clone(), t1, &b, &n);
-        t2 = modmuladd(t2.clone(), t2, &b, &n);
-        t2 = modmuladd(t2.clone(), t2, &b, &n);
+        if y.eq(&x) {
+            return n;
+        }
+        if i == k {
+            y = x.clone();
+            k <<= 1;
+        }
     }
-    pre
+}
+
+fn not_really_random() -> usize {
+    static mut SEED: usize = 1233344556;
+    unsafe {
+        SEED = usize::wrapping_mul(SEED, 27755);
+        SEED = usize::wrapping_add(SEED, 9987);
+        SEED
+    }
 }
 
 impl PollardRho for usize {
     fn rand_region(limit: &Self) -> Self { 
-        rand::random::<usize>() % (limit - 1) + 1 
+        not_really_random() % (limit - 1) + 1
     }
     fn gcd(a: &Self, b: &Self) -> Self {     
         if *b == 0 { *a } else { Self::gcd(b, &(a % b)) } 
@@ -159,32 +160,23 @@ impl PollardRho for usize {
     }
 }
 
-struct U256 {
-    h: u128,
-    l: u128,
-}
-
-impl U256 {
-    fn new(decimal: &str) -> U256 {
-        let mut h = 0;
-        let mut l = 0;
-        for ch in decimal.chars() {
-            let a = ch.to_digit(10).unwrap();
-            if l > u128::max_value() / 10 {
-                h += l % (u128::max_value() / 10);
-                l %= u128::max_value() / 10;
-            } 
-            l *= 10;
-            l += a as u128;
-        }
-        U256 { h, l }
+fn do_find(n: usize, mut c: usize) {
+    if n == 1 {
+        return;
     }
+    if miller_rabin(&n) {
+        println!("{}", n);
+        return;
+    }
+    let mut a = n;
+    while a >= n {
+        a = pollard_rho(a, c);
+        c -= 1;
+    }
+    do_find(a, c);
+    do_find(n / a, c);
 }
 
 fn main() {
-    let mut a = 0;
-    while a == 0 {
-        a = pollard_rho(&1120000, a);
-        println!("{:?}", a);
-    }
+    do_find(99999997, 10000000);
 }
